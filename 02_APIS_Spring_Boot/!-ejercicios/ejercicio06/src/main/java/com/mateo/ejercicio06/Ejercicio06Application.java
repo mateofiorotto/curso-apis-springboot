@@ -1,0 +1,15 @@
+package com.mateo.ejercicio06;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Ejercicio06Application {
+//	Ejercicio Nº 6 – Promedio de Notas
+//
+//	Un alumno de secundaria desea poder contar con una API mediante la cual, al enviar las 3 notas de una materia obtenga como respuesta el promedio de la misma. Para el pasaje de notas como parámetro utilizar la annotation @RequestParam.
+	public static void main(String[] args) {
+		SpringApplication.run(Ejercicio06Application.class, args);
+	}
+
+}
