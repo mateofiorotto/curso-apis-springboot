@@ -1,6 +1,6 @@
 package com.mateo.ejercicio01.service;
 
-import com.mateo.ejercicio01.dto.CursoDTO;
+import com.mateo.ejercicio01.dto.CursoTemaDTO;
 import com.mateo.ejercicio01.model.Curso;
 import com.mateo.ejercicio01.repository.ICursoRepository;
 import org.springframework.stereotype.Service;
@@ -50,5 +50,36 @@ public class CursoService implements ICursoService {
         Curso curso = cursoRepository.findById(id_curso).orElse(null);
 
         return curso;
+    }
+
+    //4. Obtener Temas por Curso
+    @Override
+    public CursoTemaDTO temasPorCurso(Long id_curso) {
+
+        // instancia de CursoTemaDTO
+        CursoTemaDTO cursoTemaDTO = new CursoTemaDTO();
+
+        //buscamos el curso por el metodo previamente creado FIND
+        Curso curso = this.findCurso(id_curso);
+        cursoTemaDTO.setNombreCurso(curso.getNombre());
+        cursoTemaDTO.setListaTemas(curso.getListaDeTemas());
+
+        return cursoTemaDTO;
+    }
+
+    //5. cursos con palabra java
+    @Override
+    public List<Curso> cursosJava(){
+
+        List<Curso> listaCursos = this.getCursos();
+        List<Curso> listaCursosJava = new ArrayList<Curso>();
+
+        for(Curso c : listaCursos ){
+            if(c.getNombre().contains("Java")){
+                listaCursosJava.add(c);
+            }
+        }
+
+        return listaCursosJava;
     }
 }

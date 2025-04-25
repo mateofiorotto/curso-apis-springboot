@@ -1,5 +1,6 @@
 package com.mateo.ejercicio01.controller;
 
+import com.mateo.ejercicio01.dto.CursoTemaDTO;
 import com.mateo.ejercicio01.model.Curso;
 import com.mateo.ejercicio01.service.ICursoService;
 import org.springframework.web.bind.annotation.*;
@@ -49,5 +50,17 @@ public class CursoController {
         cursoService.deleteCurso(id_curso);
 
         return "Curso eliminado correctamente";
+    }
+
+    // temas por curso (punto 4)
+    @GetMapping("/cursos/temas/{id_curso}")
+    public CursoTemaDTO temasPorCurso(@PathVariable Long id_curso){
+        return cursoService.temasPorCurso(id_curso);
+    }
+
+    // cursos con palabra java
+    @GetMapping("/cursos/java")
+    public List<Curso> cursosJava(){
+        return cursoService.cursosJava();
     }
 }
